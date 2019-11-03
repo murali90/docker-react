@@ -3,21 +3,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t stephengrider/docker-react -f Dockerfile.dev .
+  - docker build -t muralidevops8080/murali90/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run stephengrider/docker-react npm run test -- --coverage
+    - docker run muralidevops8080/murali90/docker-react npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
-  region: "us-west-2"
-  app: "docker"
-  env: "Docker-env"
-  bucket_name: "elasticbeanstalk-us-west-2-306476627547"
-  bucket_path: "docker"
+  region: "ap-south-1"
+  app: "docker-react"
+  env: " DockerReact-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-847374754482"
+  bucket_path: "docker-react"
   on:
     branch: master
-  access_key_id: $AWS_ACCESS_KEY
+  access_key_id: $ACCESS_KEY
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+    secure: "$ACCESS_PASS"
 
